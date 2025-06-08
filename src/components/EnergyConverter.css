@@ -401,6 +401,10 @@
     gap: 15px;
   }
 
+  .controls-section {
+    margin-bottom: 20px;
+  }
+
   .side {
     max-width: 260px;
   }

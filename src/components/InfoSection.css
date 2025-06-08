@@ -139,7 +139,7 @@
 /* Mobile breakpoint */
 @media screen and (max-width: 480px) {
   .info-section {
-    padding: 1.25rem 0.75rem;
+    padding: 1.5rem 1.5rem;
     margin: 15px auto;
   }
 
