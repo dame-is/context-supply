@@ -1,0 +1,128 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+.info-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--card-bg, #27282d);
+  border: 1px solid #3f4147;
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 1001;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  text-align: left;
+}
+
+.info-modal:hover {
+  border-color: #5f5f6f;
+}
+
+.info-modal h2 {
+  margin: 0 0 24px 0;
+  font-size: 24px;
+  color: #fff;
+  text-align: left;
+}
+
+.info-modal h3 {
+  margin: 32px 0 16px 0;
+  font-size: 18px;
+  color: #fff;
+  text-align: left;
+}
+
+.info-modal section {
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.info-modal section:last-child {
+  margin-bottom: 0;
+}
+
+.info-modal p {
+  margin: 0 0 16px 0;
+  line-height: 1.7;
+  font-size: 15px;
+  text-align: left;
+}
+
+.info-modal p:last-child {
+  margin-bottom: 0;
+}
+
+.info-modal ul {
+  margin: 0;
+  padding-left: 20px;
+  text-align: left;
+}
+
+.info-modal li {
+  margin: 8px 0;
+  text-align: left;
+}
+
+.info-modal a {
+  color: #64b5f6;
+  text-decoration: none;
+  transition: color 0.2s;
+  display: inline-block;
+  text-align: left;
+}
+
+.info-modal a:hover {
+  color: #90caf9;
+  text-decoration: underline;
+}
+
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.close-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Custom scrollbar for the modal */
+.info-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.info-modal::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border-radius: 4px;
+}
+
+.info-modal::-webkit-scrollbar-thumb {
+  background: #4d4d4d;
+  border-radius: 4px;
+}
+
+.info-modal::-webkit-scrollbar-thumb:hover {
+  background: #5d5d5d;
+} 

@@ -1,0 +1,262 @@
+.converter-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: var(--spacing);
+}
+
+.converter-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 24px 0;
+  text-align: center;
+}
+
+.measurement-toggles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.mode-status {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 40px;
+  font-family: monospace;
+  opacity: 0.8;
+}
+
+.converter-body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.emoji-button {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 12px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #3f4147;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  background-color: var(--card-bg, #27282d);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.emoji-button:hover {
+  background-color: var(--secondary-bg, #1e1f23);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.emoji-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.emoji-button.active {
+  background-color: var(--secondary-bg, #1e1f23);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  border-color: #5f5f6f;
+}
+
+.info-button {
+  margin: 0 8px;
+}
+
+.estimate-toggles {
+  display: flex;
+  gap: 8px;
+}
+
+.unit-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  opacity: 0.8;
+  font-family: monospace;
+}
+
+.percentage-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #3f4147;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.percentage-footer p {
+  margin: 0 0 12px 0;
+}
+
+.percentage-footer p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .measurement-toggles {
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .converter-body {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .emoji-box {
+    width: 120px;
+    height: 120px;
+    font-size: 64px;
+    margin-bottom: 8px;
+  }
+
+  .quantity {
+    font-size: 24px;
+    margin: 8px 0;
+  }
+
+  .percentage {
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  .equals-sign {
+    transform: rotate(90deg);
+    margin: 10px 0;
+    font-size: 24px;
+    height: 24px;
+    line-height: 24px;
+  }
+
+  .side {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    gap: 12px;
+  }
+
+  .selector-container {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .site-title {
+    font-size: 36px;
+    margin-bottom: 24px;
+  }
+
+  .dark-select {
+    padding: 8px;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .unit-text {
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  .percentage-footer {
+    margin-top: 24px;
+    padding-top: 16px;
+    font-size: 14px;
+  }
+
+  .converter-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Additional optimization for very small screens */
+@media (max-width: 480px) {
+  .converter-body {
+    gap: 15px;
+  }
+
+  .side {
+    max-width: 260px;
+  }
+
+  .selector-container {
+    max-width: 260px;
+  }
+
+  .emoji-box {
+    width: 100px;
+    height: 100px;
+    font-size: 52px;
+  }
+
+  .equals-sign {
+    margin: 5px 0;
+    font-size: 20px;
+    height: 20px;
+    line-height: 20px;
+  }
+
+  .quantity {
+    font-size: 20px;
+  }
+
+  .dark-select {
+    padding: 6px;
+    font-size: 13px;
+  }
+}
+
+/* Additional optimization for very small screens */
+@media (max-height: 700px) {
+  .measurement-toggles {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .emoji-box {
+    width: 100px;
+    height: 100px;
+    font-size: 52px;
+  }
+
+  .quantity {
+    font-size: 20px;
+  }
+
+  .percentage {
+    font-size: 11px;
+  }
+
+  .site-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .unit-text {
+    font-size: 11px;
+    margin-top: 2px;
+  }
+
+  .percentage-footer {
+    margin-top: 20px;
+    padding-top: 12px;
+    font-size: 13px;
+  }
+
+  .converter-title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+} 
