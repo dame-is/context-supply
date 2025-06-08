@@ -45,6 +45,11 @@ const InfoSection = () => {
             </a>
           </li>
           <li>
+            <a href="https://andymasley.substack.com/p/individual-ai-use-is-not-bad-for" target="_blank" rel="noopener noreferrer">
+              Andy Mesley - Using ChatGPT is not bad for the environment (2025)
+            </a>
+          </li>
+          <li>
             <a href="https://arxiv.org/pdf/2304.03271" target="_blank" rel="noopener noreferrer">
               UC Riverside - Making AI Less "Thirsty" (2023)
             </a>
