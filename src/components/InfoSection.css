@@ -20,20 +20,19 @@
 .info-section h2,
 .info-section h3 {
   margin-bottom: 1rem;
-  text-align: center;
+  color: var(--text-color);
+  font-weight: 600;
 }
 
 .info-section h2 {
   font-size: 24px;
-  color: var(--text-color);
-  font-weight: 600;
+  text-align: center;
   margin-top: 0px;
 }
 
 .info-section h3 {
   font-size: 20px;
-  color: var(--text-color);
-  font-weight: 600;
+  text-align: left;
 }
 
 .info-section p {
@@ -79,6 +78,39 @@
 
 .resource-list a:hover {
   color: #2563eb;
+}
+
+.key-points-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  counter-reset: key-points;
+}
+
+.key-points-list li {
+  position: relative;
+  padding: 1rem 1rem 1rem 3rem;
+  margin-bottom: 1rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  counter-increment: key-points;
+}
+
+.key-points-list li:last-child {
+  margin-bottom: 0;
+}
+
+.key-points-list li::before {
+  content: counter(key-points);
+  position: absolute;
+  left: 1rem;
+  color: var(--accent-color);
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.key-points-list p {
+  margin: 0;
 }
 
 @media (max-width: 768px) {

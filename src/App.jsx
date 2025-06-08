@@ -1,6 +1,7 @@
 import EnergyConverter from './components/EnergyConverter'
 import InfoSection from './components/InfoSection'
 import SiteFooter from './components/SiteFooter'
+import ScrollIndicator from './components/ScrollIndicator'
 import './App.css'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <EnergyConverter />
       <InfoSection />
       <SiteFooter />
+      <ScrollIndicator />
     </div>
   )
 }
