@@ -1,0 +1,107 @@
+.info-section {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 2rem;
+  background-color: var(--secondary-bg);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  text-align: left;
+}
+
+.info-section section {
+  margin-bottom: 2rem;
+}
+
+.info-section section:last-child {
+  margin-bottom: 0;
+}
+
+.info-section h2,
+.info-section h3 {
+  margin-bottom: 1rem;
+}
+
+.info-section h2 {
+  font-size: 24px;
+  color: var(--text-color);
+  font-weight: 600;
+  margin-top: 0px;
+}
+
+.info-section h3 {
+  font-size: 20px;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.info-section p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.info-section a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  display: inline-block;
+}
+
+.info-section a:hover {
+  opacity: 0.8;
+}
+
+.info-section strong {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.resource-list {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.resource-list li {
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+  padding-left: 0.5rem;
+}
+
+.resource-list a {
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  line-height: 1.4;
+  display: inline;
+}
+
+.resource-list a:hover {
+  color: #2563eb;
+}
+
+@media (max-width: 768px) {
+  .info-section {
+    padding: 1.5rem 1rem;
+  }
+  
+  .info-section h2 {
+    font-size: 20px;
+  }
+  
+  .info-section h3 {
+    font-size: 18px;
+  }
+
+  .resource-list {
+    padding-left: 1.25rem;
+  }
+
+  .resource-list li {
+    margin-bottom: 1rem;
+  }
+
+  .resource-list a {
+    line-height: 1.5;
+  }
+} 

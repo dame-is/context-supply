@@ -44,31 +44,34 @@
 }
 
 .app {
-  height: 100%;
-  padding: 10px;
-  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .app-header {
-  margin-bottom: 20px;
-  margin-top: 20px;
+  text-align: center;
+  padding-top: 32px;
 }
 
 .site-title {
-  font-size: 36px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 600;
   margin: 0;
-  color: #fff;
-  text-align: center;
-  letter-spacing: -1px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text-color);
 }
 
 .site-tagline {
   font-size: 14px;
-  color: #a8b3cf;
+  color: var(--text-secondary);
   margin: 4px 0 0 0;
-  font-weight: 400;
+  opacity: 0.8;
+}
+
+/* Add spacing between converter and info section */
+.converter-container {
+  margin-bottom: 48px;
 }
 
 @media (max-width: 768px) {
@@ -81,16 +84,15 @@
   }
 
   .app-header {
-    margin-bottom: 24px;
+    padding: 24px 0;
   }
 
   .site-title {
-    font-size: 36px;
+    font-size: 20px;
   }
 
   .site-tagline {
-    font-size: 14px;
-    margin-top: 6px;
+    font-size: 13px;
   }
 }
 

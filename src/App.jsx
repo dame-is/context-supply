@@ -1,4 +1,6 @@
 import EnergyConverter from './components/EnergyConverter'
+import InfoSection from './components/InfoSection'
+import SiteFooter from './components/SiteFooter'
 import './App.css'
 
 function App() {
@@ -9,6 +11,8 @@ function App() {
         <p className="site-tagline">tools for clearer thinking</p>
       </header>
       <EnergyConverter />
+      <InfoSection />
+      <SiteFooter />
     </div>
   )
 }

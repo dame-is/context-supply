@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import { lifestyleEquivalents, aiModels } from '../data/energyData';
-import InfoModal from './InfoModal';
 import './EnergyConverter.css';
 
 const EnergyConverter = () => {
@@ -121,8 +120,6 @@ const EnergyConverter = () => {
   const dragStartValueRef = useRef(0);
   const lastIncrementRef = useRef(0);
   const dragStartQueryCountRef = useRef(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isTogglingType, setIsTogglingType] = useState(false);
   const [isSelectingRight, setIsSelectingRight] = useState(false);
   const [showAiComingSoon, setShowAiComingSoon] = useState(false);
   const rightSideRef = useRef(null);
@@ -196,7 +193,7 @@ const EnergyConverter = () => {
 
   // Effect to update calculations when estimate changes
   useEffect(() => {
-    if (!isDragging && !isTogglingType) {
+    if (!isDragging) {
       const newRightValue = calculateRightValue(queryCount, measurementType, estimate, selectedEquivalent);
       setRightSideValue(newRightValue);
     }
@@ -230,7 +227,6 @@ const EnergyConverter = () => {
 
   // Toggle between energy and water
   const toggleMeasurementType = () => {
-    setIsTogglingType(true);
     const newType = measurementType === 'energy' ? 'water' : 'energy';
     const defaultEquivalent = newType === 'energy' ? 'tv' : 'burger';
 
@@ -250,11 +246,6 @@ const EnergyConverter = () => {
     // Update state with exact values
     setQueryCount(exactQueryCount);
     setRightSideValue(1);
-
-    // Reset the toggling flag after a short delay
-    setTimeout(() => {
-      setIsTogglingType(false);
-    }, 100);
   };
 
   // Cycle through estimate modes: neutral -> optimistic -> pessimistic -> neutral
@@ -330,33 +321,28 @@ const EnergyConverter = () => {
     <div className="converter-container">
       <h2 className="converter-title">AI Water & Energy Converter</h2>
       
-      <div className="measurement-toggles">
-        <button 
-          onClick={toggleMeasurementType}
-          className="emoji-button"
-          title={measurementType === 'energy' ? 'Switch to Water Usage' : 'Switch to Energy Usage'}
-        >
-          {TYPE_EMOJIS[measurementType]}
-        </button>
+      <div className="controls-section">
+        <div className="measurement-toggles">
+          <button 
+            onClick={toggleMeasurementType}
+            className="emoji-button"
+            title={measurementType === 'energy' ? 'Switch to Water Usage' : 'Switch to Energy Usage'}
+          >
+            {TYPE_EMOJIS[measurementType]}
+          </button>
 
-        <button 
-          className="emoji-button info-button"
-          onClick={() => setIsModalOpen(true)}
-        >
-          ℹ️
-        </button>
+          <button 
+            onClick={cycleEstimate}
+            className="emoji-button"
+            title={`Current: ${estimate} estimate`}
+          >
+            {ESTIMATE_EMOJIS[estimate]}
+          </button>
+        </div>
 
-        <button 
-          onClick={cycleEstimate}
-          className="emoji-button"
-          title={`Current: ${estimate} estimate`}
-        >
-          {ESTIMATE_EMOJIS[estimate]}
-        </button>
-      </div>
-
-      <div className="mode-status">
-        {measurementType.charAt(0).toUpperCase() + measurementType.slice(1)} / {estimate.charAt(0).toUpperCase() + estimate.slice(1)}
+        <div className="mode-status">
+          {measurementType.charAt(0).toUpperCase() + measurementType.slice(1)} / {estimate.charAt(0).toUpperCase() + estimate.slice(1)}
+        </div>
       </div>
 
       <div className="converter-body">
@@ -367,9 +353,6 @@ const EnergyConverter = () => {
             title="More models coming soon!"
           >
             {aiModels.chatgpt.emoji}
-          </div>
-          <div className="emoji-label">
-            {aiModels.chatgpt.name}
           </div>
           <div className="quantity">
             {isEditingLeft ? (
@@ -392,14 +375,15 @@ const EnergyConverter = () => {
               >
                 {formatNumber(queryCount, 'left')}
               </span>
-            )} {getUnitText(queryCount, 'queries')}
+            )}
+            <span className="unit-text">{getUnitText(queryCount, 'queries')}</span>
           </div>
           <div className="unit-text">
             {getCurrentUnitText(measurementType, estimate)}
           </div>
           {showAiComingSoon && (
             <div className="coming-soon-popup">
-              More AI models coming soon!
+              Based on ChatGPT... more models will be added as data becomes available!
             </div>
           )}
         </div>
@@ -413,9 +397,6 @@ const EnergyConverter = () => {
             title="Click to change equivalent"
           >
             {currentEquivalents[selectedEquivalent].emoji}
-          </div>
-          <div className="emoji-label">
-            {currentEquivalents[selectedEquivalent].name}
           </div>
           <div className="quantity">
             {isEditingRight ? (
@@ -438,7 +419,8 @@ const EnergyConverter = () => {
               >
                 {formatNumber(rightSideValue, 'right')}
               </span>
-            )} {getUnitText(rightSideValue, currentEquivalents[selectedEquivalent].unit)}
+            )}
+            <span className="unit-text">{getUnitText(rightSideValue, currentEquivalents[selectedEquivalent].unit)}</span>
           </div>
           <div className="unit-text">
             {currentEquivalents[selectedEquivalent].value} {measurementType === 'energy' ? 'kWh' : 'gallons'} per {currentEquivalents[selectedEquivalent].unit.singular}
@@ -464,14 +446,12 @@ const EnergyConverter = () => {
         <p>
           This amounts to {calculatePercentage(queryCount, measurementType, estimate, selectedEquivalent)}% of the average US household's daily {measurementType} use ({measurementType === 'energy' ? `${DAILY_HOUSEHOLD_ENERGY} kWh` : `${DAILY_HOUSEHOLD_WATER.toLocaleString()} gallons`}).
         </p>
-        <p className="usage-fact">
+        <p>
           {measurementType === 'energy' 
             ? "Air conditioning, heating, and lighting account for over 50%."
             : "The shower, toilet, and faucet account for around 60%."}
         </p>
       </div>
-
-      <InfoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };

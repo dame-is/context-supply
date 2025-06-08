@@ -1,0 +1,30 @@
+.site-footer {
+  margin-top: 20px;
+  padding: 20px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.site-footer p {
+  margin: 0 0 8px 0;
+}
+
+.site-footer p:last-child {
+  margin-bottom: 0;
+}
+
+.site-footer a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  transition: all 0.2s ease;
+}
+
+.site-footer a:hover {
+  opacity: 0.8;
+  text-decoration-thickness: 2px;
+} 
