@@ -123,6 +123,10 @@ const EnergyConverter = () => {
   const dragStartQueryCountRef = useRef(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isTogglingType, setIsTogglingType] = useState(false);
+  const [isSelectingRight, setIsSelectingRight] = useState(false);
+  const [showAiComingSoon, setShowAiComingSoon] = useState(false);
+  const rightSideRef = useRef(null);
+  const leftSideRef = useRef(null);
 
   // Helper function to round numbers based on their magnitude
   const roundNumber = (num) => {
@@ -287,6 +291,41 @@ const EnergyConverter = () => {
     }
   };
 
+  // Handle clicking outside the popups
+  useEffect(() => {
+    if (!isSelectingRight && !showAiComingSoon) return;
+
+    const handleClickOutside = (event) => {
+      if (isSelectingRight && rightSideRef.current && !rightSideRef.current.contains(event.target)) {
+        setIsSelectingRight(false);
+      }
+      if (showAiComingSoon && leftSideRef.current && !leftSideRef.current.contains(event.target)) {
+        setShowAiComingSoon(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isSelectingRight, showAiComingSoon]);
+
+  // Handle clicking on the left emoji box (AI model)
+  const handleLeftEmojiClick = () => {
+    setShowAiComingSoon(!showAiComingSoon);
+  };
+
+  // Handle clicking on the right emoji box (equivalent)
+  const handleRightEmojiClick = () => {
+    setIsSelectingRight(!isSelectingRight);
+  };
+
+  // Handle selecting a new equivalent
+  const handleEquivalentSelect = (newEquivalent) => {
+    setSelectedEquivalent(newEquivalent);
+    setIsSelectingRight(false);
+  };
+
   return (
     <div className="converter-container">
       <h2 className="converter-title">AI Water & Energy Converter</h2>
@@ -321,9 +360,16 @@ const EnergyConverter = () => {
       </div>
 
       <div className="converter-body">
-        <div className="side">
-          <div className="emoji-box">
+        <div className="side" ref={leftSideRef}>
+          <div 
+            className={`emoji-box ${showAiComingSoon ? 'active' : ''}`}
+            onClick={handleLeftEmojiClick}
+            title="More models coming soon!"
+          >
             {aiModels.chatgpt.emoji}
+          </div>
+          <div className="emoji-label">
+            {aiModels.chatgpt.name}
           </div>
           <div className="quantity">
             {isEditingLeft ? (
@@ -351,24 +397,25 @@ const EnergyConverter = () => {
           <div className="unit-text">
             {getCurrentUnitText(measurementType, estimate)}
           </div>
-          <div className="selector-container">
-            <select 
-              disabled
-              className="dark-select disabled"
-              title="More models coming soon!"
-            >
-              <option value="chatgpt">
-                {aiModels.chatgpt.emoji} {aiModels.chatgpt.name}
-              </option>
-            </select>
-          </div>
+          {showAiComingSoon && (
+            <div className="coming-soon-popup">
+              More AI models coming soon!
+            </div>
+          )}
         </div>
 
         <div className="equals-sign">=</div>
 
-        <div className="side">
-          <div className="emoji-box">
+        <div className="side" ref={rightSideRef}>
+          <div 
+            className={`emoji-box ${isSelectingRight ? 'active' : ''}`}
+            onClick={handleRightEmojiClick}
+            title="Click to change equivalent"
+          >
             {currentEquivalents[selectedEquivalent].emoji}
+          </div>
+          <div className="emoji-label">
+            {currentEquivalents[selectedEquivalent].name}
           </div>
           <div className="quantity">
             {isEditingRight ? (
@@ -389,7 +436,6 @@ const EnergyConverter = () => {
                 onClick={() => setIsEditingRight(true)}
                 onMouseDown={(e) => startDragging('right', rightSideValue, e)}
               >
-                {console.log('rightSideValue before format:', rightSideValue)}
                 {formatNumber(rightSideValue, 'right')}
               </span>
             )} {getUnitText(rightSideValue, currentEquivalents[selectedEquivalent].unit)}
@@ -397,19 +443,20 @@ const EnergyConverter = () => {
           <div className="unit-text">
             {currentEquivalents[selectedEquivalent].value} {measurementType === 'energy' ? 'kWh' : 'gallons'} per {currentEquivalents[selectedEquivalent].unit.singular}
           </div>
-          <div className="selector-container">
-            <select 
-              value={selectedEquivalent} 
-              onChange={(e) => setSelectedEquivalent(e.target.value)}
-              className="dark-select"
-            >
+          {isSelectingRight && (
+            <div className="equivalent-options">
               {Object.entries(currentEquivalents).map(([key, item]) => (
-                <option key={key} value={key}>
-                  {item.emoji} {item.name}
-                </option>
+                <button
+                  key={key}
+                  className={`emoji-button ${key === selectedEquivalent ? 'active' : ''}`}
+                  onClick={() => handleEquivalentSelect(key)}
+                  title={item.name}
+                >
+                  {item.emoji}
+                </button>
               ))}
-            </select>
-          </div>
+            </div>
+          )}
         </div>
       </div>
 
