@@ -7,13 +7,13 @@ const InfoSection = () => {
       <section>
         <h2>About</h2>
         <p>
-          <strong>You can use this tool to better understand the environmental impact of using AI by comparing it to everday things that people can more easily relate to.</strong> The estimates are based on available research cited below and can be toggled between a pessimistic, neutral, or optimistic calculation.
+          <strong>Use this tool to better understand the environmental impact of using AI</strong> by comparing it to everday things that people can more easily relate to. The estimates are based on available research cited below and can be toggled between a pessimistic, neutral, or optimistic calculation.
         </p>
         <p>
           <strong>For most people, the impact of using AI is likely to be insignificant in comparison to other lifestyle factors.</strong> However, for those who use AI heavily, the impact can be much more significant. Keep in mind that data centers accounted for 1.5% of the world's electricity consumption in 2024, of which AI usage is a subset along with other internet-related activities. Reducing or opting out of eating meat (especially beef) and voting for candidates who prioritize environmental issues are by far the most impactful things the average American can do.
         </p>
         <p>
-          <strong>Even with individual lifestyle changes though, we will only be able to prevent long-term ecological collapse if corporations and governments make necessary changes.</strong> Their actions and prioritization of non-renewable energy sources account for the vast majority of global emissions.
+          Even with individual lifestyle changes, <strong>we will only be able to prevent long-term ecological collapse if corporations and governments make necessary changes.</strong> Their actions and prioritization of non-renewable energy sources account for the vast majority of global emissions.
         </p>
         <p>
           <strong>Note:</strong> determining the environmental impact of personal AI usage is complex and depends on factors such as model version, configuration, query length, data center efficiency, and regional energy sources. This tool is a work in progress and feedback is appreciated to help improve the accuracy and usefulness of the tool. You can reach out to me on <a href="https://bsky.app/profile/dame.is" target="_blank" rel="noopener noreferrer">Bluesky</a> or open an issue on <a href="https://github.com/dame-is/context-supply" target="_blank" rel="noopener noreferrer">GitHub</a>.

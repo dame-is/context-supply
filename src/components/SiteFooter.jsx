@@ -29,6 +29,14 @@ const SiteFooter = () => {
         >
           Open Source Code
         </a>
+        {' | '}
+        <a 
+          href="https://bsky.app/profile/dame.is" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          Connect on Bluesky
+        </a>
       </p>
     </footer>
   );

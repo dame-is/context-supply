@@ -52,7 +52,7 @@
 
 .app-header {
   text-align: center;
-  padding-top: 32px;
+  margin: 2rem 0;
 }
 
 .site-title {
@@ -83,10 +83,6 @@
     padding: 10px;
   }
 
-  .app-header {
-    padding: 24px 0;
-  }
-
   .site-title {
     font-size: 20px;
   }
@@ -103,10 +99,6 @@
 
   .app {
     padding: 8px;
-  }
-
-  .app-header {
-    margin-bottom: 16px;
   }
 
   .site-title {
