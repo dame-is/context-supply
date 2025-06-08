@@ -6,19 +6,27 @@
   z-index: 1000;
   cursor: pointer;
   animation: fadeIn 0.3s ease-in;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+  background-color: var(--card-bg);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .scroll-indicator:hover {
   opacity: 1;
+  transform: translate(-50%, -2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border-color: var(--accent-color);
 }
 
 .scroll-arrow {
   font-size: 24px;
   color: var(--accent-color);
   animation: bounce 2s infinite;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
 }
 
 @keyframes bounce {
@@ -39,7 +47,7 @@
     transform: translate(-50%, 10px);
   }
   to {
-    opacity: 0.7;
+    opacity: 0.9;
     transform: translate(-50%, 0);
   }
 }
@@ -47,6 +55,7 @@
 @media (max-width: 768px) {
   .scroll-indicator {
     bottom: 15px;
+    padding: 6px 12px;
   }
   
   .scroll-arrow {

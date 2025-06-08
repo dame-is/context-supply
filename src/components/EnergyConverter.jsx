@@ -149,6 +149,8 @@ const EnergyConverter = () => {
   const [showAiComingSoon, setShowAiComingSoon] = useState(false);
   const rightSideRef = useRef(null);
   const leftSideRef = useRef(null);
+  const [editingLeftValue, setEditingLeftValue] = useState('');
+  const [editingRightValue, setEditingRightValue] = useState('');
 
   // Helper function to round numbers based on their magnitude
   const roundNumber = (num) => {
@@ -236,18 +238,35 @@ const EnergyConverter = () => {
   };
 
   // Also update the manual input handlers to use whole numbers
-  const handleLeftValueChange = (value) => {
-    const newValue = Math.max(1, Math.round(value));
+  const handleLeftValueChange = (e) => {
+    const inputValue = e.target.value;
+    setEditingLeftValue(inputValue);
+  };
+
+  const handleRightValueChange = (e) => {
+    const inputValue = e.target.value;
+    setEditingRightValue(inputValue);
+  };
+
+  const handleLeftValueComplete = () => {
+    let newValue = parseFloat(editingLeftValue);
+    if (isNaN(newValue) || newValue < 0) newValue = 0;
+    newValue = Math.round(newValue); // Ensure whole numbers for left side
     setQueryCount(newValue);
     const newRightValue = calculateRightValue(newValue, measurementType, estimate, selectedEquivalent);
     setRightSideValue(Math.round(newRightValue * 100) / 100);
+    setIsEditingLeft(false);
+    setEditingLeftValue('');
   };
 
-  const handleRightValueChange = (value) => {
-    const newValue = Math.max(1, Math.round(value * 100) / 100);
+  const handleRightValueComplete = () => {
+    let newValue = parseFloat(editingRightValue);
+    if (isNaN(newValue) || newValue < 0) newValue = 0;
+    newValue = Math.round(newValue * 100) / 100; // Allow decimals for right side
     setRightSideValue(newValue);
-    // Always round the query count since left side is always whole numbers
     setQueryCount(Math.round(calculateLeftValue(newValue, measurementType, estimate, selectedEquivalent)));
+    setIsEditingRight(false);
+    setEditingRightValue('');
   };
 
   // Toggle between energy and water
@@ -398,13 +417,13 @@ const EnergyConverter = () => {
             {isEditingLeft ? (
               <input
                 type="number"
-                value={queryCount}
-                onChange={(e) => handleLeftValueChange(parseFloat(e.target.value) || 0)}
-                onBlur={() => setIsEditingLeft(false)}
-                onKeyDown={(e) => e.key === 'Enter' && setIsEditingLeft(false)}
+                value={editingLeftValue}
+                onChange={handleLeftValueChange}
+                onBlur={handleLeftValueComplete}
+                onKeyDown={(e) => e.key === 'Enter' && handleLeftValueComplete()}
                 autoFocus
                 className="editable-number"
-                min="1"
+                min="0"
                 step="1"
               />
             ) : (
@@ -442,14 +461,14 @@ const EnergyConverter = () => {
             {isEditingRight ? (
               <input
                 type="number"
-                value={Math.round(rightSideValue * 100) / 100}
-                onChange={(e) => handleRightValueChange(parseFloat(e.target.value) || 0)}
-                onBlur={() => setIsEditingRight(false)}
-                onKeyDown={(e) => e.key === 'Enter' && setIsEditingRight(false)}
+                value={editingRightValue}
+                onChange={handleRightValueChange}
+                onBlur={handleRightValueComplete}
+                onKeyDown={(e) => e.key === 'Enter' && handleRightValueComplete()}
                 autoFocus
                 className="editable-number"
-                min="1"
-                step="1"
+                min="0"
+                step="0.01"
               />
             ) : (
               <span 

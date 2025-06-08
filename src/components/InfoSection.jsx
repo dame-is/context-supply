@@ -7,7 +7,7 @@ const InfoSection = () => {
       <section>
         <h2>About</h2>
         <p>
-          <strong>Use this tool to better understand the environmental impact of personal AI usage by comparing it to everday things that people can more easily relate to.</strong> The estimates are based on currently available research cited below and can be toggled between a pessimistic, neutral, or optimistic calculation.
+          Use this tool to better understand the environmental impact of personal AI usage by comparing it to everday things that people can more easily relate to. The estimates are based on currently available research cited below and can be toggled between a pessimistic, neutral, or optimistic calculation.
         </p>
         <ol className="key-points-list">
           <li>
