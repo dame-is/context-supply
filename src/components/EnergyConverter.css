@@ -13,6 +13,7 @@
   color: var(--text-color);
   text-align: center;
   margin: 0;
+  line-height: 1.2em;
 }
 
 .controls-section {
@@ -354,9 +355,6 @@
     font-size: 20px;
   }
 
-  .controls-section {
-    margin-bottom: 20px;
-  }
 }
 
 @media (max-height: 700px) {
@@ -396,10 +394,6 @@
     width: 100px;
   }
 
-  .controls-section {
-    padding: 8px;
-    margin-bottom: 24px;
-  }
 }
 
 /* Additional optimization for very small screens */
