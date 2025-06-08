@@ -229,8 +229,21 @@ const EnergyConverter = () => {
   };
 
   const handleLeftValueComplete = () => {
+    // Initialize with current value when entering edit mode
+    if (editingLeftValue === '') {
+      setIsEditingLeft(false);
+      setEditingLeftValue('');
+      return;
+    }
+
     let newValue = parseFloat(editingLeftValue);
-    if (isNaN(newValue) || newValue < 0) newValue = 0;
+    // Keep the current value if input is invalid
+    if (isNaN(newValue) || newValue < 0) {
+      setIsEditingLeft(false);
+      setEditingLeftValue('');
+      return;
+    }
+    
     newValue = Math.round(newValue); // Ensure whole numbers for left side
     setQueryCount(newValue);
     const newRightValue = calculateRightValue(newValue, measurementType, estimate, selectedEquivalent);
@@ -239,10 +252,50 @@ const EnergyConverter = () => {
     setEditingLeftValue('');
   };
 
+  // Add a helper function to format numbers consistently
+  const formatInputValue = (num, side) => {
+    if (num === undefined || num === null) return '0';
+    
+    // Left side is always whole numbers
+    if (side === 'left') {
+      return Math.round(num).toString();
+    }
+    
+    // For right side values, show at most 2 decimal places
+    const rounded = Math.round(num * 100) / 100;
+    return rounded.toString();
+  };
+
+  useEffect(() => {
+    if (isEditingLeft) {
+      setEditingLeftValue(formatInputValue(queryCount, 'left'));
+    }
+  }, [isEditingLeft, queryCount]);
+
+  useEffect(() => {
+    if (isEditingRight) {
+      setEditingRightValue(formatInputValue(rightSideValue, 'right'));
+    }
+  }, [isEditingRight, rightSideValue]);
+
   const handleRightValueComplete = () => {
+    // Initialize with current value when entering edit mode
+    if (editingRightValue === '') {
+      setIsEditingRight(false);
+      setEditingRightValue('');
+      return;
+    }
+
     let newValue = parseFloat(editingRightValue);
-    if (isNaN(newValue) || newValue < 0) newValue = 0;
-    newValue = Math.round(newValue * 100) / 100; // Allow decimals for right side
+    // Keep the current value if input is invalid
+    if (isNaN(newValue) || newValue < 0) {
+      setIsEditingRight(false);
+      setEditingRightValue('');
+      return;
+    }
+    
+    // Round to 2 decimal places
+    newValue = Math.round(newValue * 100) / 100;
     setRightSideValue(newValue);
     setQueryCount(Math.round(calculateLeftValue(newValue, measurementType, estimate, selectedEquivalent)));
     setIsEditingRight(false);
@@ -434,7 +487,8 @@ const EnergyConverter = () => {
                 autoFocus
                 className="editable-number"
                 min="0"
-                step="0.01"
+                step="1"
+                inputMode="decimal"
               />
             ) : (
               <span 

@@ -17,22 +17,21 @@
   margin-bottom: 0;
 }
 
-.info-section h2,
-.info-section h3 {
-  margin-bottom: 1rem;
-  color: var(--text-color);
-  font-weight: 600;
-}
-
 .info-section h2 {
-  font-size: 24px;
+  font-size: 2em;
+  font-weight: 600;
+  color: var(--text-color);
   text-align: center;
-  margin-top: 0px;
+  margin: 0 0 1rem 0;
+  line-height: 1.2em;
 }
 
 .info-section h3 {
   font-size: 20px;
   text-align: left;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  font-weight: 600;
 }
 
 .info-section p {
@@ -121,7 +120,7 @@
   }
   
   .info-section h2 {
-    font-size: 20px;
+    font-size: 1.5em;
   }
   
   .info-section h3 {
@@ -145,7 +144,7 @@
   }
 
   .info-section h2 {
-    font-size: 18px;
+    font-size: 1.5em;
   }
 
   .info-section h3 {
