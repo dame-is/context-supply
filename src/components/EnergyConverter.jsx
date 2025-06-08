@@ -4,7 +4,7 @@ import './EnergyConverter.css';
 
 const EnergyConverter = () => {
   // Constants for daily household usage
-  const DAILY_HOUSEHOLD_ENERGY = 28.77; // kWh (10,500 kWh/year ÷ 365 days)
+  const DAILY_HOUSEHOLD_ENERGY = 30; // kWh (10,950 kWh/year ÷ 365 days)
   const DAILY_HOUSEHOLD_WATER = 300; // Gallons per day
 
   // Helper function to handle singular/plural units
