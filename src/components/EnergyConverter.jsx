@@ -94,7 +94,22 @@ const EnergyConverter = () => {
       : MODEL_WATER_PER_QUERY[est];
     const equivalent = lifestyleEquivalents[type][equiv];
     
-    return (modelUsage * leftValue) / equivalent.value;
+    // For exact values (like when toggling), return exactly 1
+    if (leftValue === Math.round(equivalent.value / modelUsage)) {
+      return 1;
+    }
+    
+    const result = (modelUsage * leftValue) / equivalent.value;
+    console.log('calculateRightValue:', {
+      leftValue,
+      type,
+      est,
+      equiv,
+      modelUsage,
+      equivalentValue: equivalent.value,
+      result
+    });
+    return result;
   };
 
   // Calculate the left side value based on right side value (no rounding)
@@ -104,7 +119,17 @@ const EnergyConverter = () => {
       : MODEL_WATER_PER_QUERY[est];
     const equivalent = lifestyleEquivalents[type][equiv];
     
-    return (rightValue * equivalent.value) / modelUsage;
+    const result = (rightValue * equivalent.value) / modelUsage;
+    console.log('calculateLeftValue:', {
+      rightValue,
+      type,
+      est,
+      equiv,
+      modelUsage,
+      equivalentValue: equivalent.value,
+      result
+    });
+    return result;
   };
 
   const [measurementType, setMeasurementType] = useState('water');
@@ -229,6 +254,12 @@ const EnergyConverter = () => {
   const toggleMeasurementType = () => {
     const newType = measurementType === 'energy' ? 'water' : 'energy';
     const defaultEquivalent = newType === 'energy' ? 'tv' : 'burger';
+    
+    console.log('toggleMeasurementType - start:', {
+      newType,
+      defaultEquivalent,
+      estimate
+    });
 
     // First update the state that affects calculations
     setMeasurementType(newType);
@@ -240,11 +271,20 @@ const EnergyConverter = () => {
       : MODEL_WATER_PER_QUERY[estimate];
     const equivalentValue = lifestyleEquivalents[newType][defaultEquivalent].value;
     
-    // Calculate exact query count needed for 1 unit
-    const exactQueryCount = Math.round(equivalentValue / modelUsage);
+    // Calculate exact query count needed for 1 unit and ensure it results in exactly 1 unit
+    const exactQueryCount = equivalentValue / modelUsage;
+    const roundedQueryCount = Math.round(exactQueryCount);
     
-    // Update state with exact values
-    setQueryCount(exactQueryCount);
+    console.log('toggleMeasurementType - calculations:', {
+      modelUsage,
+      equivalentValue,
+      exactQueryCount,
+      roundedQueryCount,
+      resultingRightValue: (modelUsage * roundedQueryCount) / equivalentValue
+    });
+
+    // Update state with values that will give us exactly 1 unit
+    setQueryCount(roundedQueryCount);
     setRightSideValue(1);
   };
 
