@@ -2,29 +2,23 @@
 
 Tools for clearer thinking
 
-## AI Energy & Water Converter
+## AI Water & Energy Converter
 
-This tool helps you better understand the environmental impact of using AI by comparing it to everyday things that people can more easily relate to. The estimates are based on available research and can be toggled between pessimistic, neutral, or optimistic calculations.
+Use this tool to better understand the environmental impact of personal AI usage by comparing it to everday things that people can more easily relate to. The estimates are based on currently available research cited below and can be toggled between a pessimistic, neutral, or optimistic calculation.
 
 ### Key Points
 
-- For most people, the impact of using AI is likely to be insignificant compared to other lifestyle factors
-- However, for heavy AI users, the impact can be much more significant
-- Data centers accounted for 1.5% of the world's electricity consumption in 2024, with AI usage being a subset of this
-- The most impactful environmental actions for the average American remain:
-  - Reducing or eliminating meat consumption (especially beef)
-  - Voting for candidates who prioritize environmental issues
+1. **For most people, the impact of using AI is likely to be insignificant in comparison to other lifestyle factors.** However, for those who use AI heavily, the impact can be much more significant. This may change in the future.
+
+2. Reducing or opting out of eating meat (especially beef) and voting for candidates who prioritize environmental issues are by far the most impactful things the average American can do.
+
+3. Even with lifestyle changes though, **preventing long-term ecological collapse is mostly dependent on corporations and governments making necessary changes.** Their prioritization of non-renewable energy sources account for the vast majority of global emissions. We must demand action.
+
+4. Data centers accounted for only 1.5% of the world's electricity consumption in 2024, of which AI usage is merely a subset along with other internet-related activities. This percentage is expected to grow as AI usage increases, and data centers are projected to become more efficient and rely more on renewable energy sources.
 
 ### Important Note
 
-Determining the environmental impact of personal AI usage is complex and depends on various factors:
-- Model version
-- Configuration
-- Query length
-- Data center efficiency
-- Regional energy sources
-
-This tool is a work in progress and feedback is appreciated to help improve its accuracy and usefulness.
+Determining the environmental impact of personal AI usage is complex and depends on factors such as model version, configuration, query length, data center efficiency, and regional energy sources. This tool is a work in progress and feedback is appreciated to help improve the accuracy and usefulness of the tool.
 
 ### Further Reading
 
@@ -45,9 +39,4 @@ This tool is a work in progress and feedback is appreciated to help improve its 
 
 ### Contact & Feedback
 
-- [Bluesky](https://bsky.app/profile/dame.is)
-- [GitHub Issues](https://github.com/dame-is/context-supply)
-
-### Environmental Impact Statement
-
-Even with individual lifestyle changes, preventing long-term ecological collapse will require significant changes from corporations and governments. Their actions and prioritization of non-renewable energy sources account for the vast majority of global emissions.
+You can reach out on [Bluesky](https://bsky.app/profile/dame.is) or open an issue on [GitHub](https://github.com/dame-is/context-supply).
