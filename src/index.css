@@ -146,10 +146,6 @@ input.dark-select::-webkit-inner-spin-button {
 }
 
 @media (max-width: 768px) {
-  .converter-body {
-    flex-direction: column;
-    gap: 40px;
-  }
 
   .mode-toggles {
     flex-direction: column;

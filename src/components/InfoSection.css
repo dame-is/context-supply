@@ -112,8 +112,8 @@
   margin: 0;
 }
 
-/* Tablet breakpoint - matches converter-container */
-@media (max-width: 768px) {
+/* Tablet breakpoint */
+@media screen and (max-width: 768px) {
   .info-section {
     padding: 1.5rem 1rem;
     margin: 20px auto;
@@ -127,17 +127,17 @@
     font-size: 18px;
   }
 
-  .resource-list {
+  .info-section .resource-list {
     padding-left: 1.25rem;
   }
 
-  .key-points-list li {
+  .info-section .key-points-list li {
     padding: 0.75rem 0.75rem 0.75rem 2.5rem;
   }
 }
 
-/* Mobile breakpoint - matches converter-container */
-@media (max-width: 480px) {
+/* Mobile breakpoint */
+@media screen and (max-width: 480px) {
   .info-section {
     padding: 1.25rem 0.75rem;
     margin: 15px auto;
@@ -151,27 +151,26 @@
     font-size: 16px;
   }
 
-  .key-points-list li {
+  .info-section .key-points-list li {
     padding: 0.75rem 0.75rem 0.75rem 2.25rem;
   }
 
-  .key-points-list li::before {
+  .info-section .key-points-list li::before {
     font-size: 1em;
   }
 }
 
-/* Height-based breakpoint - matches converter-container */
-@media (max-height: 700px) {
+/* Height-based adjustments */
+@media screen and (max-height: 700px) {
   .info-section {
-    padding: 1rem 0.75rem;
     margin: 10px auto;
   }
 
-  .key-points-list {
+  .info-section .key-points-list {
     margin: 1rem 0;
   }
 
-  .key-points-list li {
+  .info-section .key-points-list li {
     margin-bottom: 0.75rem;
   }
 } 
