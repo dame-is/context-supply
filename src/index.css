@@ -174,59 +174,6 @@ input.dark-select::-webkit-inner-spin-button {
   }
 }
 
-.editable-text {
-  cursor: pointer;
-  border-bottom: 1px dashed var(--text-secondary);
-  padding: 2px 4px;
-  user-select: none;
-  cursor: ew-resize;
-  position: relative;
-}
-
-.editable-text:hover {
-  background-color: var(--secondary-bg);
-}
-
-.editable-text.dragging {
-  background-color: var(--accent-color);
-  opacity: 0.8;
-}
-
-.editable-text.dragging::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  cursor: ew-resize;
-}
-
-.editable-number {
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid var(--accent-color);
-  color: var(--text-color);
-  font-size: inherit;
-  font-weight: inherit;
-  width: 100px;
-  text-align: center;
-  padding: 2px 4px;
-}
-
-.editable-number:focus {
-  outline: none;
-}
-
-.editable-number::-webkit-outer-spin-button,
-.editable-number::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.editable-number[type=number] {
-  -moz-appearance: textfield;
-}
 
 .percentage {
   font-size: 14px;
