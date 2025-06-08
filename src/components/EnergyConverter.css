@@ -16,6 +16,14 @@
   line-height: 1.2em;
 }
 
+.converter-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 8px 0 16px;
+  opacity: 0.8;
+}
+
 .controls-section {
   display: flex;
   flex-direction: column;
@@ -303,6 +311,11 @@
 
   .converter-title {
     font-size: 1.5em;
+  }
+
+  .converter-subtitle {
+    font-size: 13px;
+    margin: 6px 0 12px;
   }
 
   .converter-body {

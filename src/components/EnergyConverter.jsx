@@ -398,6 +398,7 @@ const EnergyConverter = () => {
   return (
     <div className="converter-container">
       <h2 className="converter-title">AI Water & Energy Converter</h2>
+      <p className="converter-subtitle">Tap on the emojis to change things!</p>
       
       <div className="controls-section">
         <div className="measurement-toggles">
