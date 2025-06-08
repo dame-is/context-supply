@@ -1,14 +1,14 @@
 .converter-container {
-  max-width: 900px;
-  margin: 40px auto;
+  max-width: 800px;
+  margin: 20px auto;
   padding: var(--spacing);
 }
 
 .converter-title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   color: var(--text-color);
-  margin: 0 0 24px 0;
+  margin: 0 0 16px 0;
   text-align: center;
 }
 
@@ -16,15 +16,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
 .mode-status {
   text-align: center;
   color: var(--text-secondary);
-  font-size: 14px;
-  margin-bottom: 40px;
+  font-size: 13px;
+  margin-bottom: 24px;
   font-family: monospace;
   opacity: 0.8;
 }
@@ -33,7 +33,37 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 60px;
+  gap: 40px;
+}
+
+.emoji-box {
+  font-size: 80px;
+  line-height: 1;
+  background-color: var(--card-bg);
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  margin-bottom: 8px;
+  border: 1px solid #3f4147;
+}
+
+.quantity {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 8px 0;
+  color: var(--text-color);
+  opacity: 0.95;
+}
+
+.equals-sign {
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-top: 140px;
 }
 
 .emoji-button {
@@ -102,33 +132,31 @@
   margin-bottom: 0;
 }
 
-@media (max-width: 768px) {
-  .measurement-toggles {
-    gap: 12px;
-    margin-bottom: 24px;
-  }
+.selector-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 140px;
+}
 
+.dark-select {
+  padding: 8px;
+  border-radius: var(--border-radius);
+  border: 1px solid #3f4147;
+  font-size: 14px;
+  text-align: center;
+  width: 140px;
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  appearance: none;
+}
+
+@media (max-width: 768px) {
   .converter-body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-  }
-
-  .emoji-box {
-    width: 120px;
-    height: 120px;
-    font-size: 64px;
-    margin-bottom: 8px;
-  }
-
-  .quantity {
-    font-size: 24px;
-    margin: 8px 0;
-  }
-
-  .percentage {
-    font-size: 12px;
-    margin-top: 4px;
   }
 
   .equals-sign {
@@ -141,26 +169,56 @@
 
   .side {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
     margin: 0 auto;
-    gap: 12px;
+  }
+
+  .emoji-box {
+    width: 120px;
+    height: 120px;
+    font-size: 60px;
+  }
+
+  .quantity {
+    font-size: 20px;
   }
 
   .selector-container {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-
-  .site-title {
-    font-size: 36px;
-    margin-bottom: 24px;
+    width: 120px;
   }
 
   .dark-select {
-    padding: 8px;
-    font-size: 14px;
-    width: 100%;
+    width: 120px;
+  }
+}
+
+@media (max-height: 700px) {
+  .converter-container {
+    margin: 10px auto;
+  }
+
+  .measurement-toggles {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .mode-status {
+    margin-bottom: 16px;
+  }
+
+  .emoji-box {
+    width: 100px;
+    height: 100px;
+    font-size: 50px;
+  }
+
+  .equals-sign {
+    margin-top: 100px;
+  }
+
+  .quantity {
+    font-size: 18px;
+    margin: 6px 0;
   }
 
   .unit-text {
@@ -168,15 +226,12 @@
     margin-top: 2px;
   }
 
-  .percentage-footer {
-    margin-top: 24px;
-    padding-top: 16px;
-    font-size: 14px;
+  .selector-container {
+    width: 100px;
   }
 
-  .converter-title {
-    font-size: 20px;
-    margin-bottom: 20px;
+  .dark-select {
+    width: 100px;
   }
 }
 
@@ -215,47 +270,12 @@
     padding: 6px;
     font-size: 13px;
   }
-}
 
-/* Additional optimization for very small screens */
-@media (max-height: 700px) {
-  .measurement-toggles {
-    gap: 10px;
-    margin-bottom: 16px;
+  .selector-container {
+    width: 120px;
   }
 
-  .emoji-box {
-    width: 100px;
-    height: 100px;
-    font-size: 52px;
-  }
-
-  .quantity {
-    font-size: 20px;
-  }
-
-  .percentage {
-    font-size: 11px;
-  }
-
-  .site-title {
-    font-size: 32px;
-    margin-bottom: 20px;
-  }
-
-  .unit-text {
-    font-size: 11px;
-    margin-top: 2px;
-  }
-
-  .percentage-footer {
-    margin-top: 20px;
-    padding-top: 12px;
-    font-size: 13px;
-  }
-
-  .converter-title {
-    font-size: 18px;
-    margin-bottom: 16px;
+  .dark-select {
+    width: 120px;
   }
 } 

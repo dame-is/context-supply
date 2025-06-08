@@ -1,7 +1,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
   min-height: 100vh;
   box-sizing: border-box;
@@ -45,17 +45,17 @@
 
 .app {
   height: 100%;
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
 }
 
 .app-header {
-  margin-bottom: 32px;
-  margin-top: 32px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .site-title {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 700;
   margin: 0;
   color: #fff;
@@ -65,9 +65,9 @@
 }
 
 .site-tagline {
-  font-size: 16px;
+  font-size: 14px;
   color: #a8b3cf;
-  margin: 8px 0 0 0;
+  margin: 4px 0 0 0;
   font-weight: 400;
 }
 

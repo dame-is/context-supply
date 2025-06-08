@@ -15,6 +15,9 @@ const EnergyConverter = () => {
     
     // Handle the case where unit is a string (like "Queries")
     if (typeof unit === 'string') {
+      if (unit === 'queries') {
+        return roundedValue === 1 ? 'query' : 'queries';
+      }
       const singularUnit = unit.endsWith('s') ? unit.slice(0, -1) : unit;
       return roundedValue === 1 ? singularUnit : unit;
     }
