@@ -60,16 +60,6 @@ export const lifestyleEquivalents = {
       },
       description: "Running an LED light bulb for one day"
     },
-    fridge: {
-      name: "Refrigerator",
-      emoji: "🧊",
-      value: 3.6, // kWh per day
-      unit: {
-        singular: "day",
-        plural: "days"
-      },
-      description: "Running a refrigerator for one day"
-    },
     kettle: {
       name: "Electric Kettle",
       emoji: "☕️",
