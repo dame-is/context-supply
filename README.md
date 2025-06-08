@@ -2,7 +2,7 @@
 
 Tools for clearer thinking
 
-## AI Usage Environmental Impact Calculator
+## AI Energy & Water Converter
 
 This tool helps you better understand the environmental impact of using AI by comparing it to everyday things that people can more easily relate to. The estimates are based on available research and can be toggled between pessimistic, neutral, or optimistic calculations.
 

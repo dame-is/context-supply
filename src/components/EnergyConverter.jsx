@@ -289,7 +289,7 @@ const EnergyConverter = () => {
 
   return (
     <div className="converter-container">
-      <h2 className="converter-title">AI usage converter</h2>
+      <h2 className="converter-title">AI water & energy converter</h2>
       
       <div className="measurement-toggles">
         <button 
