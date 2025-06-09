@@ -131,6 +131,7 @@ const EnergyConverter = () => {
   const leftSideRef = useRef(null);
   const [editingLeftValue, setEditingLeftValue] = useState('');
   const [editingRightValue, setEditingRightValue] = useState('');
+  const [aiPopupMessage, setAiPopupMessage] = useState('Based on ChatGPT... more models will be added as data becomes available!');
 
   // Helper function to round numbers based on their magnitude
   const roundNumber = (num) => {
@@ -395,6 +396,43 @@ const EnergyConverter = () => {
     setIsSelectingRight(false);
   };
 
+  // Add these new functions after the existing state declarations
+  const cycleAiModel = (direction) => {
+    // Currently we only have one model, so just show a popup
+    const message = direction === 'next' ? 
+      "More AI models will be added as data is available!" : 
+      "ChatGPT is the only model currently available.";
+    setAiPopupMessage(message);
+    setShowAiComingSoon(true);
+    setTimeout(() => setShowAiComingSoon(false), 2000);
+  };
+
+  const cycleEquivalent = (direction) => {
+    const equivalents = Object.keys(currentEquivalents);
+    const currentIndex = equivalents.indexOf(selectedEquivalent);
+    let nextIndex;
+    
+    if (direction === 'next') {
+      nextIndex = (currentIndex + 1) % equivalents.length;
+    } else {
+      nextIndex = (currentIndex - 1 + equivalents.length) % equivalents.length;
+    }
+    
+    handleEquivalentSelect(equivalents[nextIndex]);
+  };
+
+  const incrementValue = (side, amount) => {
+    if (side === 'left') {
+      const newValue = Math.max(1, queryCount + amount);
+      setQueryCount(newValue);
+      setRightSideValue(calculateRightValue(newValue, measurementType, estimate, selectedEquivalent));
+    } else {
+      const newValue = Math.max(1, rightSideValue + amount);
+      setRightSideValue(newValue);
+      setQueryCount(Math.round(calculateLeftValue(newValue, measurementType, estimate, selectedEquivalent)));
+    }
+  };
+
   return (
     <div className="converter-container">
       <h2 className="converter-title">AI Water & Energy Converter</h2>
@@ -402,6 +440,11 @@ const EnergyConverter = () => {
       
       <div className="controls-section">
         <div className="measurement-toggles">
+          <button 
+            className="emoji-nav-arrow left"
+            onClick={() => toggleMeasurementType()}
+            title={measurementType === 'energy' ? 'Switch to Water Usage' : 'Switch to Energy Usage'}
+          />
           <button 
             onClick={toggleMeasurementType}
             className="emoji-button"
@@ -417,6 +460,11 @@ const EnergyConverter = () => {
           >
             {ESTIMATE_EMOJIS[estimate]}
           </button>
+          <button 
+            className="emoji-nav-arrow right"
+            onClick={() => cycleEstimate()}
+            title={`Switch to ${estimate === 'neutral' ? 'optimistic' : estimate === 'optimistic' ? 'pessimistic' : 'neutral'} estimate`}
+          />
         </div>
 
         <div className="mode-status">
@@ -426,12 +474,24 @@ const EnergyConverter = () => {
 
       <div className="converter-body">
         <div className="side" ref={leftSideRef}>
-          <div 
-            className={`emoji-box ${showAiComingSoon ? 'active' : ''}`}
-            onClick={handleLeftEmojiClick}
-            title="More models coming soon!"
-          >
-            {aiModels.chatgpt.emoji}
+          <div className="emoji-box-container">
+            <button 
+              className="emoji-nav-arrow left"
+              onClick={() => cycleAiModel('prev')}
+              title="Previous AI Model"
+            />
+            <div 
+              className={`emoji-box ${showAiComingSoon ? 'active' : ''}`}
+              onClick={handleLeftEmojiClick}
+              title="More models coming soon!"
+            >
+              {aiModels.chatgpt.emoji}
+            </div>
+            <button 
+              className="emoji-nav-arrow right"
+              onClick={() => cycleAiModel('next')}
+              title="Next AI Model"
+            />
           </div>
           <div className="quantity">
             {isEditingLeft ? (
@@ -447,22 +507,38 @@ const EnergyConverter = () => {
                 step="1"
               />
             ) : (
-              <span 
-                className={`editable-text ${isDragging === 'left' ? 'dragging' : ''}`}
-                onClick={() => setIsEditingLeft(true)}
-                onMouseDown={(e) => startDragging('left', queryCount, e)}
-              >
-                {formatNumber(queryCount, 'left')}
-              </span>
+              <div className="number-control-container">
+                <button 
+                  className="number-control-button"
+                  onClick={() => incrementValue('left', -1)}
+                  title="Decrease"
+                >
+                  <span>-</span>
+                </button>
+                <span 
+                  className={`editable-text ${isDragging === 'left' ? 'dragging' : ''}`}
+                  onClick={() => setIsEditingLeft(true)}
+                  onMouseDown={(e) => startDragging('left', queryCount, e)}
+                >
+                  {formatNumber(queryCount, 'left')}
+                </span>
+                <span className="unit-text">{getUnitText(queryCount, 'queries')}</span>
+                <button 
+                  className="number-control-button"
+                  onClick={() => incrementValue('left', 1)}
+                  title="Increase"
+                >
+                  <span>+</span>
+                </button>
+              </div>
             )}
-            <span className="unit-text">{getUnitText(queryCount, 'queries')}</span>
           </div>
           <div className="unit-text">
             {getCurrentUnitText(measurementType, estimate)}
           </div>
           {showAiComingSoon && (
             <div className="coming-soon-popup">
-              Based on ChatGPT... more models will be added as data becomes available!
+              {aiPopupMessage}
             </div>
           )}
         </div>
@@ -470,12 +546,24 @@ const EnergyConverter = () => {
         <div className="equals-sign">=</div>
 
         <div className="side" ref={rightSideRef}>
-          <div 
-            className={`emoji-box ${isSelectingRight ? 'active' : ''}`}
-            onClick={handleRightEmojiClick}
-            title="Click to change equivalent"
-          >
-            {currentEquivalents[selectedEquivalent].emoji}
+          <div className="emoji-box-container">
+            <button 
+              className="emoji-nav-arrow left"
+              onClick={() => cycleEquivalent('prev')}
+              title="Previous Equivalent"
+            />
+            <div 
+              className={`emoji-box ${isSelectingRight ? 'active' : ''}`}
+              onClick={handleRightEmojiClick}
+              title="Click to change equivalent"
+            >
+              {currentEquivalents[selectedEquivalent].emoji}
+            </div>
+            <button 
+              className="emoji-nav-arrow right"
+              onClick={() => cycleEquivalent('next')}
+              title="Next Equivalent"
+            />
           </div>
           <div className="quantity">
             {isEditingRight ? (
@@ -492,15 +580,31 @@ const EnergyConverter = () => {
                 inputMode="decimal"
               />
             ) : (
-              <span 
-                className={`editable-text ${isDragging === 'right' ? 'dragging' : ''}`}
-                onClick={() => setIsEditingRight(true)}
-                onMouseDown={(e) => startDragging('right', rightSideValue, e)}
-              >
-                {formatNumber(rightSideValue, 'right')}
-              </span>
+              <div className="number-control-container">
+                <button 
+                  className="number-control-button"
+                  onClick={() => incrementValue('right', -1)}
+                  title="Decrease"
+                >
+                  <span>-</span>
+                </button>
+                <span 
+                  className={`editable-text ${isDragging === 'right' ? 'dragging' : ''}`}
+                  onClick={() => setIsEditingRight(true)}
+                  onMouseDown={(e) => startDragging('right', rightSideValue, e)}
+                >
+                  {formatNumber(rightSideValue, 'right')}
+                </span>
+                <span className="unit-text">{getUnitText(rightSideValue, currentEquivalents[selectedEquivalent].unit)}</span>
+                <button 
+                  className="number-control-button"
+                  onClick={() => incrementValue('right', 1)}
+                  title="Increase"
+                >
+                  <span>+</span>
+                </button>
+              </div>
             )}
-            <span className="unit-text">{getUnitText(rightSideValue, currentEquivalents[selectedEquivalent].unit)}</span>
           </div>
           <div className="unit-text">
             {currentEquivalents[selectedEquivalent].value} {measurementType === 'energy' ? 'kWh' : 'gallons'} per {currentEquivalents[selectedEquivalent].unit.singular}

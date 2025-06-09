@@ -38,6 +38,24 @@
   justify-content: center;
   align-items: center;
   gap: 12px;
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.measurement-toggles .emoji-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.measurement-toggles .emoji-nav-arrow.left {
+  left: 0;
+}
+
+.measurement-toggles .emoji-nav-arrow.right {
+  right: 0;
 }
 
 .mode-status {
@@ -57,6 +75,24 @@
   gap: 5px;
 }
 
+.emoji-box-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto;
+}
+
+.side .emoji-box-container .emoji-nav-arrow.left {
+  left: -8px;
+}
+
+.side .emoji-box-container .emoji-nav-arrow.right {
+  right: -8px;
+}
+
 .emoji-box {
   font-size: 80px;
   line-height: 1;
@@ -72,6 +108,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin: 0;
 }
 
 .emoji-box:hover {
@@ -102,6 +139,8 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .quantity .unit-text {
@@ -109,14 +148,17 @@
   font-weight: 400;
   font-size: inherit;
   font-family: inherit;
+  margin: 0;
+  white-space: nowrap;
 }
 
 .equals-sign {
-  font-size: 32px;
-  font-weight: 300;
+  font-size: 36px;
+  font-weight: 600;
   color: var(--text-color);
-  opacity: 0.8;
+  opacity: 1;
   margin-top: 100px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .emoji-button {
@@ -133,6 +175,8 @@
   transition: all 0.2s ease;
   background-color: var(--card-bg);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 99;
 }
 
 .emoji-button:hover {
@@ -215,8 +259,7 @@
   position: relative;
 }
 
-.equivalent-options,
-.coming-soon-popup {
+.equivalent-options {
   position: absolute;
   top: calc(100% - 60px);
   left: 50%;
@@ -226,8 +269,12 @@
   border: 1px solid #3f4147;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 100;
+  z-index: 98;
   animation: fadeIn 0.2s ease;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+  gap: 8px;
+  max-width: 240px;
 }
 
 @keyframes fadeIn {
@@ -242,19 +289,26 @@
 }
 
 .coming-soon-popup {
-  width: max-content;
-  max-width: 200px;
+  position: absolute;
+  top: calc(100% - 60px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 16px;
+  background-color: var(--card-bg);
+  border: 1px solid #3f4147;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 98;
+  animation: fadeIn 0.2s ease;
+  min-width: 140px;
+  max-width: 160px;
   text-align: center;
   color: var(--text-secondary);
   font-size: 14px;
-  padding: 16px;
-}
-
-.equivalent-options {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
-  gap: 8px;
-  max-width: 240px;
+  line-height: 1.4;
+  white-space: normal;
+  word-break: normal;
+  display: block;
 }
 
 .equivalent-options::before,
@@ -269,6 +323,7 @@
   background-color: var(--card-bg);
   border-left: 1px solid #3f4147;
   border-top: 1px solid #3f4147;
+  z-index: -1;
 }
 
 .equivalent-options .emoji-button {
@@ -327,14 +382,14 @@
   .equals-sign {
     transform: rotate(90deg);
     margin: 0;
-    font-size: 24px;
-    height: 24px;
-    line-height: 24px;
+    font-size: 28px;
+    height: 28px;
+    line-height: 28px;
   }
 
   .side {
     width: 100%;
-    max-width: 280px;
+    max-width: 230px;
     margin: 0 auto;
   }
 
@@ -342,6 +397,14 @@
     width: 120px;
     height: 120px;
     font-size: 60px;
+  }
+
+  .side .emoji-box-container .emoji-nav-arrow.left {
+    left: -4px;
+  }
+
+  .side .emoji-box-container .emoji-nav-arrow.right {
+    right: -4px;
   }
 
   .quantity {
@@ -419,7 +482,7 @@
   }
 
   .side {
-    max-width: 260px;
+    max-width: 200px;
   }
 
   .selector-container {
@@ -432,11 +495,19 @@
     font-size: 52px;
   }
 
+  .side .emoji-box-container .emoji-nav-arrow.left {
+    left: 0px;
+  }
+
+  .side .emoji-box-container .emoji-nav-arrow.right {
+    right: 0px;
+  }
+
   .equals-sign {
     margin: 5px 0;
-    font-size: 20px;
-    height: 20px;
-    line-height: 20px;
+    font-size: 24px;
+    height: 24px;
+    line-height: 24px;
   }
 
   .quantity {
@@ -463,6 +534,12 @@
   .unit-text {
     font-size: 12px;
     margin-top: 2px;
+  }
+
+  .emoji-nav-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
   }
 }
 
@@ -514,4 +591,109 @@
 .editable-number:focus {
   outline: none;
   background-color: var(--secondary-bg);
+}
+
+.emoji-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 24px;
+  color: var(--text-color);
+  opacity: 0.5;
+  transition: all 0.2s ease;
+  z-index: 1;
+  padding: 0;
+  line-height: 1;
+}
+
+.emoji-nav-arrow:hover {
+  opacity: 0.8;
+  background: var(--card-bg);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.emoji-nav-arrow.left {
+  left: 0;
+}
+
+.emoji-nav-arrow.right {
+  right: 0;
+}
+
+.emoji-nav-arrow::before {
+  content: '‹';
+  display: block;
+  margin-top: -4px;
+}
+
+.emoji-nav-arrow.right::before {
+  content: '›';
+}
+
+.number-control-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.number-control-container .unit-text {
+  margin: 0;
+  white-space: nowrap;
+  padding-right: 3px;
+  margin-left: -3px;
+}
+
+.number-control-button {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text-color);
+  opacity: 0.8;
+  transition: all 0.2s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.number-control-button:hover {
+  opacity: 1;
+  background: var(--secondary-bg);
+  border-color: var(--accent-color);
+}
+
+.number-control-button span {
+  display: block;
+  margin-top: -2px;
+}
+
+/* Mobile optimizations */
+@media (max-width: 480px) {
+  .emoji-nav-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
+
+  .number-control-button {
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+  }
 } 
