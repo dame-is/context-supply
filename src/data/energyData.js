@@ -176,7 +176,7 @@ export const lifestyleEquivalents = {
       // Reference: https://peanutbureau.ca/the-water-footprint-of-peanuts
       name: "Peanut",
       emoji: "🥜",
-      value: 0.1, // Gallons; based on 3.2 gal/oz and 30 peanuts/oz
+      value: 0.11, // Gallons; based on 3.2 gal/oz and 30 peanuts/oz
       unit: {
         singular: "peanut",
         plural: "peanuts"
