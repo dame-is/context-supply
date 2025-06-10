@@ -61,9 +61,9 @@ const EnergyConverter = () => {
   const formatNumber = (num, side) => {
     if (num === undefined || num === null) return '0';
     
-    // Left side is always whole numbers
+    // Left side is always whole numbers with commas for thousands
     if (side === 'left') {
-      return Math.round(num).toString();
+      return Math.round(num).toLocaleString();
     }
     
     // For right side values
@@ -73,18 +73,18 @@ const EnergyConverter = () => {
         return '1';
       }
       
-      // If being dragged, show whole numbers
+      // If being dragged, show whole numbers with commas
       if (isDragging === 'right' || lastDraggedSide === 'right') {
-        return Math.round(num).toString();
+        return Math.round(num).toLocaleString();
       }
       
       // Otherwise show up to 2 decimal places, but only if needed
       const rounded = Math.round(num * 100) / 100;
       if (rounded === 1) return '1';
-      return rounded % 1 === 0 ? Math.round(rounded).toString() : rounded.toFixed(2);
+      return rounded % 1 === 0 ? Math.round(rounded).toLocaleString() : rounded.toFixed(2);
     }
     
-    return num.toString();
+    return num.toLocaleString();
   };
 
   // Calculate the right side value (no rounding)
