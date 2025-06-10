@@ -171,6 +171,17 @@ export const lifestyleEquivalents = {
         plural: "cups"
       },
       description: "Producing one cup of rice"
+    },
+    peanut: {
+      // Reference: https://peanutbureau.ca/the-water-footprint-of-peanuts
+      name: "Peanut",
+      emoji: "🥜",
+      value: 0.1, // Gallons; based on 3.2 gal/oz and 30 peanuts/oz
+      unit: {
+        singular: "peanut",
+        plural: "peanuts"
+      },
+      description: "Producing one peanut"
     }
   }
 };
