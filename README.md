@@ -4,7 +4,7 @@ Tools for clearer thinking
 
 ## AI Water & Energy Converter
 
-Use this tool to better understand the environmental impact of personal AI usage by comparing it to everday things that people can more easily relate to. The estimates are based on currently available research cited below and can be toggled between a pessimistic, neutral, or optimistic calculation.
+Use this tool to better understand the environmental impact of personal AI usage by comparing it to everday things that people can more easily relate to. The estimates are based on currently available research cited below and can be toggled between a pessimistic, neutral, or optimistic calculation. Sam Altman's cited consumption data is used as the "optimistic" viewpoint.
 
 ### Key Points
 
@@ -28,6 +28,7 @@ Determining the environmental impact of personal AI usage is complex and depends
 
 ### Data Sources
 
+- [Sam Altman - The Gentle Singularity (2025)](https://blog.samaltman.com/the-gentle-singularity)
 - [Pew Research - How the U.S. Public and AI Experts View Artificial Intelligence (2025)](https://www.pewresearch.org/internet/2025/04/03/how-the-us-public-and-ai-experts-view-artificial-intelligence/)
 - [Washington Post - Energy and Water Usage of AI (2024)](https://www.washingtonpost.com/technology/2024/09/18/energy-ai-use-electricity-water-data-centers/)
 - [International Energy Agency - Energy and AI Report (2025)](https://www.iea.org/reports/energy-and-ai)

@@ -7,7 +7,7 @@ const InfoSection = () => {
       <section>
         <h2>About</h2>
         <p>
-          Use this tool to better understand the environmental impact of personal AI usage by comparing it to everday things that people can more easily relate to. The estimates are based on currently available research cited below and can be toggled between a pessimistic, neutral, or optimistic calculation.
+          Use this tool to better understand the environmental impact of personal AI usage by comparing it to everday things that people can more easily relate to. The estimates are based on currently available research cited below and can be toggled between a pessimistic, neutral, or optimistic calculation. Sam Altman's cited consumption data is used as the "optimistic" viewpoint.
         </p>
         <ol className="key-points-list">
           <li>
@@ -65,6 +65,11 @@ const InfoSection = () => {
       <section>
         <h3>Data Sources</h3>
         <ul className="resource-list">
+          <li>
+            <a href="https://blog.samaltman.com/the-gentle-singularity" target="_blank" rel="noopener noreferrer">
+              Sam Altman - The Gentle Singularity (2025)
+            </a>
+          </li>
           <li>
             <a href="https://www.pewresearch.org/internet/2025/04/03/how-the-us-public-and-ai-experts-view-artificial-intelligence/" target="_blank" rel="noopener noreferrer">
               Pew Research - How the U.S. Public and AI Experts View Artificial Intelligence (2025)

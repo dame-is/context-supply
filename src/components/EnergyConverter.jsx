@@ -34,16 +34,16 @@ const EnergyConverter = () => {
 
   // Energy values in kWh (converting Wh to kWh)
   const MODEL_ENERGY_PER_QUERY = {
-    optimistic: 0.00006,  // 0.06 Wh -> kWh
+    optimistic: 0.00034,  // 0.34 Wh -> kWh (Sam Altman's blog 2025)
     pessimistic: 0.04,    // 40 Wh -> kWh
     neutral: 0.003       // 3 Wh -> kWh (baseline)
   };
 
   // Water values in gallons
   const MODEL_WATER_PER_QUERY = {
-    optimistic: 0.066,    // 0.066 gallons (250mL)
-    pessimistic: 0.264,   // 0.264 gallons (1000mL)
-    neutral: 0.132        // 0.132 gallons (500mL) (baseline)
+    optimistic: 0.000085,  // 0.000085 gallons (Sam Altman's blog 2025)
+    pessimistic: 0.264,    // 0.264 gallons (1000mL)
+    neutral: 0.132         // 0.132 gallons (500mL) (baseline)
   };
 
   const ESTIMATE_EMOJIS = {
