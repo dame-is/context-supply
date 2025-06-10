@@ -181,7 +181,7 @@ export const lifestyleEquivalents = {
         singular: "peanut",
         plural: "peanuts"
       },
-      description: "Producing one peanut"
+      description: "Producing one whole peanut (two halves)"
     }
   }
 };
