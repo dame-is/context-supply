@@ -171,6 +171,18 @@ export const lifestyleEquivalents = {
         plural: "cups"
       },
       description: "Producing one cup of rice"
+    },
+    peanut: {
+      // Water reference: https://peanutbureau.ca/the-water-footprint-of-peanuts
+      // Per-peanut weight reference: https://health.clevelandclinic.org/benefits-of-nuts
+      name: "Peanut",
+      emoji: "🥜",
+      value: 0.1, // Gallons; based on 3.2 gal/oz and 35 peanuts/oz
+      unit: {
+        singular: "peanut",
+        plural: "peanuts"
+      },
+      description: "Producing one whole peanut (two halves)"
     }
   }
 };
