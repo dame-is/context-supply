@@ -78,15 +78,10 @@ const EnergyConverter = () => {
         return Math.round(num).toString();
       }
       
-      // For very small numbers (less than 0.001), use scientific notation
-      if (num < 0.001) {
-        return num.toExponential(3);
-      }
-      
-      // Otherwise show up to 3 decimal places, but only if needed
-      const rounded = Math.round(num * 1000) / 1000;
+      // Otherwise show up to 2 decimal places, but only if needed
+      const rounded = Math.round(num * 100) / 100;
       if (rounded === 1) return '1';
-      return rounded % 1 === 0 ? Math.round(rounded).toString() : rounded.toFixed(3);
+      return rounded % 1 === 0 ? Math.round(rounded).toString() : rounded.toFixed(2);
     }
     
     return num.toString();
@@ -360,12 +355,8 @@ const EnergyConverter = () => {
       return `${formattedKilowattHours} kWh per query`;
     } else {
       const gallons = MODEL_WATER_PER_QUERY[est];
-      // For very small numbers (less than 0.001), use scientific notation
-      if (gallons < 0.001) {
-        return `${gallons.toExponential(6)} gallons per query`;
-      }
-      // Otherwise format to at most 6 decimal places and remove trailing zeros
-      const formattedGallons = parseFloat(gallons.toFixed(6));
+      // Format to at most 6 decimal places and preserve all significant digits
+      const formattedGallons = gallons < 0.001 ? gallons.toFixed(6) : parseFloat(gallons.toFixed(3));
       return `${formattedGallons} gallons per query`;
     }
   };
